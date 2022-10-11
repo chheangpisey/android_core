@@ -1,5 +1,6 @@
 package ig.core.android.di
 
+import DemoViewModelFactory
 import ig.core.android.service.implement.ApiServiceImpl
 import ig.core.android.service.repository.LoginStateFlowRepository
 import ig.core.android.service.repository.MainRepository
@@ -20,7 +21,10 @@ object Injection {
     private val LOGIN_STATE_REPOSITORY: MainStateFlowRepository by lazy { MainStateFlowRepository(apiServiceImpl = ApiServiceImpl(webService)) }
 
     val provideLoginViewModelFactory: LoginViewModelFactory by lazy { LoginViewModelFactory(loginRepository) }
+
     val provideMainViewModelFactory: MainViewModelFactory by lazy { MainViewModelFactory(
         LOGIN_STATE_REPOSITORY)
     }
+
+    val provideDemoFactory: DemoViewModelFactory by lazy { DemoViewModelFactory() }
 }

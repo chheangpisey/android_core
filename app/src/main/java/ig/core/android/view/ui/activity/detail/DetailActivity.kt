@@ -1,12 +1,12 @@
 package ig.core.android.view.ui.activity.detail
 
 import androidx.lifecycle.ViewModelProvider
+import ig.core.android.di.Injection
 import com.squareup.picasso.Picasso
 import ig.core.android.R
 import ig.core.android.base.BaseActivity
 import ig.core.android.databinding.ActivityDetailBinding
 import ig.core.android.service.model.PostsModel
-import ig.core.android.di.Injection
 import ig.core.android.viewmodel.MainViewModel
 
 class DetailActivity : BaseActivity<ActivityDetailBinding, MainViewModel>() {
