@@ -1,2 +1,3 @@
 # android_core
-upload module feature
+Released Date: 11-Oct-2022
+    - upload module feature
