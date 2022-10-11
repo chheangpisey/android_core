@@ -9,9 +9,6 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-<!--    android:name=".base.BaseApplication"-->
-<!--    android:name="com.google.android.play.core.splitcompat.SplitCompatApplication"-->
-
     <application
         android:name=".base.BaseApplication"
         android:allowBackup="true"
@@ -21,11 +18,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
-
+        <activity
+            android:name=".TestActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".view.ui.activity.navMain.NavigationMainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,8 +38,7 @@
             android:name=".view.ui.activity.login.LoginActivity"
             android:exported="true"
             android:noHistory="true"
-            android:windowSoftInputMode="stateHidden">
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
             android:name=".view.ui.activity.main.MainActivity"
             android:configChanges="orientation|screenSize"
