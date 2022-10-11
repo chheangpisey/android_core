@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0E5580</color>
+    <color name="colorPrimaryDark">#0E5580</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- Default back press toolbar -->
+    <color name="color_background">#FAFAFA</color>
+
+    <!-- Splash Screen -->
+    <!-- End of Splash Screen -->
+
+    <!-- Login Screen -->
+    <color name="login_edit_text_color_hint">#616161</color>
+    <color name="login_edit_text_text_color">#212121</color>
+    <!-- End of Login Screen -->
+
+    <!-- Container -->
+    <!-- End of Container screen -->
+
+    <!-- Transaction screen -->
+    <!-- End of transaction screen -->
+
+    <!-- Company Current Profit -->
+    <!-- End of Company Current Profit -->
+
+</resources>

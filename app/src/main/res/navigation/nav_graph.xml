@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/featureHomeGraph">
+
+<!--    app:progressDestination="@+id/progressFragment"-->
+<!--    <fragment-->
+<!--        android:id="@+id/featureHome"-->
+<!--        android:name="ig.core.android.view.ui.activity.navMain.HomeFragment"-->
+<!--        android:label="Home"-->
+<!--        tools:layout="@layout/fragment_home"/>-->
+    <include-dynamic
+        android:id="@+id/featureHomeGraph"
+        app:moduleName="home"
+        app:graphResName="home_graph"/>
+
+<!--    <fragment-->
+<!--        android:id="@+id/featureFavorite"-->
+<!--        android:name="ig.core.android.view.ui.activity.navMain.FavoriteFragment"-->
+<!--        android:label="Favorite"-->
+<!--        tools:layout="@layout/fragment_favorite"/>-->
+    <fragment
+        android:id="@+id/progressFragment"
+        android:name="ig.core.android.view.ui.activity.navMain.ProgressFragment"
+        android:label="ProgressFragment" />
+
+    <include-dynamic
+        android:id="@+id/featureFavoriteGraph"
+        app:moduleName="favorite"
+        app:graphResName="favorite_graph"/>
+
+    <fragment
+        android:id="@+id/featureSetting"
+        android:name="ig.core.android.view.ui.activity.navMain.SettingFragment"
+        android:label="Setting"
+        tools:layout="@layout/fragment_setting"/>
+
+</navigation>

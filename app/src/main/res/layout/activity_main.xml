@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="mainViewModel" type="ig.core.android.viewmodel.MainViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/default_toolbar"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:id="@+id/rvItemMain"
+            tools:listitem="@layout/item_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="5dp">
+            <TextView
+                android:id="@+id/txtLiveData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_18sp"
+                android:background="@color/colorPrimary"
+                android:textColor="#FFFFFF"
+                android:text="Live Data"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:padding="10dp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/txtStateFlow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_18sp"
+                android:background="@color/colorAccent"
+                android:textColor="#FFFFFF"
+                android:text="StateFlow"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:padding="10dp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/txtFlow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_18sp"
+                android:background="#673AB7"
+                android:textColor="#FFFFFF"
+                android:text="Flow"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:padding="10dp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/txtSharedFlow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_18sp"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="#FFFFFF"
+                android:text="SharedFlow"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:padding="10dp">
+
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
+
+

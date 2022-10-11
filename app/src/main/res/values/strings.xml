@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Android Core MVVM</string>
+
+    <!-- Image content description -->
+
+    <!-- Network connection -->
+    <string name="no_network_connection">No network connection!</string>
+    <!-- End of network connection -->
+
+    <string name="day_ago">Day ago</string>
+    <string name="hour_ago">Hour ago</string>
+    <string name="minute_ago">Minute ago</string>
+    <string name="second_ago">Second ago</string>
+    <string name="momment_ago">Moment ago</string>
+
+    <!-- Login screen -->
+    <string name="login">Sign In</string>
+    <!-- End of Login Screen -->
+    <string name="channel_id">Notification Channel</string>
+    <string name="home">Home</string>
+    <string name="detail">Detail</string>
+    <string name="main_activity">MainActivity</string>
+    <string name="email_is_require">Email is require</string>
+
+    <string name="all_is_require">Phone number and password are require</string>
+    <string name="phone_is_require">Phone number is require</string>
+    <string name="password_is_require">Password is require</string>
+    <string name="title_dynamicfeature">ModuleServiceApi</string>
+    <string name="title_dynamicfeature2">ModuleConfirm</string>
+    <string name="title_featurehome">Home</string>
+    <string name="title_dynamicfeaturedemo">Noti</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_featurefavorite">Favorite</string>
+    <string name="install_failed">Install feature favorite failed</string>
+    <string name="install_cancelled">Install feature favorite cancelled</string>
+    <string name="title_home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="setting">Setting</string>
+    <string name="title_favorite">Favorite</string>
+
+</resources>

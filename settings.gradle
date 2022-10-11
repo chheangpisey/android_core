@@ -1,0 +1,4 @@
+include ':app'
+include ':register'
+include ':features:home'
+include ':features:favorite'
