@@ -22,7 +22,7 @@ object WebService {
 
     private val baseLiveUrl: String = "http://139.59.109.135/public/api/"
     // private const val BASE_LOCAL_URL: String = "https://jsonplaceholder.typicode.com/"
-    const val BASE_LOCAL_URL: String = "http://159.138.102.36:8082/LMSDemoBranch/api/v1/"
+    const val BASE_LOCAL_URL: String = "https://reqres.in/"
     //const val BASE_LOCAL_URL: String = "http://192.168.1.168:1337"
     //const val BASE_LOCAL_URL: String = "http://192.168.1.240:1337"
     private val baseUrlMockUp: String = "http://private-72f8f-androidcoreprojectkotlindocs.apiary-mock.com/"

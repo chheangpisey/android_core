@@ -3,6 +3,7 @@ package ig.core.android.utils.retrofit
 import androidx.annotation.MainThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ig.core.android.data.repository.DemoArchRepository
 import ig.core.android.service.model.custom.ErrorResponse
 import ig.core.android.service.model.custom.NetworkResponse
 import ig.core.android.service.model.custom.ResourceResponse
@@ -52,12 +53,16 @@ abstract class NetworkRequest<T> @MainThread constructor() {
  * Date on: 29-08-2022
  */
 fun <T> networkRequest(scope: CoroutineScope,
-                       resp: NetworkResponse<T, ErrorResponse>): LiveData<ResourceResponse<T>> {
+                       resp: NetworkResponse<T, ErrorResponse>, invoke: () -> Unit): LiveData<ResourceResponse<T>> {
     val request =  object: NetworkRequest<T>() {
         override suspend fun createCall(): NetworkResponse<T, ErrorResponse> {
             return resp
         }
     }
-    scope.launch { request.fetchFromNetwork() }
+    scope.launch {
+        request.fetchFromNetwork()
+        invoke.invoke()
+    }
+
     return request.asLiveData()
 }

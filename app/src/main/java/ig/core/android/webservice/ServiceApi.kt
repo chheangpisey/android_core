@@ -39,4 +39,15 @@ interface ServiceApi {
     suspend fun lcLoginStateFlow(
         @Body b: RequestLogin
     ): StateFlowResponseTest<ResponseLogin>
+
+    @GET("api/users/2")
+    suspend fun gettingUser(): NetworkResponse<ResponseUser, ErrorResponse>
+
+    @GET("api/users/2")
+    suspend fun gettingUserStateFlow(): ResponseUser
+
+    @POST("api/users")
+    suspend fun createUserStateFlow(
+        @Body requestUserCreate: RequestUserCreate
+    ): ResponseUserCreated
 }

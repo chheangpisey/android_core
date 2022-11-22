@@ -1,8 +1,6 @@
 package ig.core.android.service.implement
 
-import ig.core.android.service.model.PostResponse
-import ig.core.android.service.model.RequestLogin
-import ig.core.android.service.model.ResponseLogin
+import ig.core.android.service.model.*
 import ig.core.android.service.model.custom.StateFlowResponse
 import ig.core.android.service.model.custom.StateFlowResponseTest
 import ig.core.android.webservice.ServiceApi
@@ -24,5 +22,12 @@ class ApiServiceImpl @Inject constructor(private val webService: WebService) {
     suspend fun loginTest(req: RequestLogin): StateFlowResponseTest<ResponseLogin> =
         webService.requestApi.lcLoginStateTest(req)
 
+
+    /***Getting User*/
+    suspend fun gettingUser(): ResponseUser = webService.requestApi.gettingUserStateFlow()
+
+    /***Creating User*/
+    suspend fun createUser(requestUserCreate: RequestUserCreate): ResponseUserCreated =
+        webService.requestApi.createUserStateFlow(requestUserCreate)
 
 }

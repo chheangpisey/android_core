@@ -38,5 +38,6 @@
     <string name="favorite">Favorite</string>
     <string name="setting">Setting</string>
     <string name="title_favorite">Favorite</string>
+    <string name="title_data">core</string>
 
 </resources>

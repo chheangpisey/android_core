@@ -13,7 +13,9 @@ import ig.core.android.view.viewholder.ItemMainViewHolder
 import ig.core.android.view.viewholder.SearchViewHolder
 
 @Suppress("UNREACHABLE_CODE")
-class MainAdapter(private val context: Context, private val itemList: ArrayList<PostsModel>, private var listenerMain: OnMainItemClickCallBack) : RecyclerView.Adapter<BaseViewHolder<PostsModel>>() {
+class MainAdapter(private val context: Context,
+                  private val itemList: ArrayList<PostsModel>,
+                  private var listenerMain: OnMainItemClickCallBack) : RecyclerView.Adapter<BaseViewHolder<PostsModel>>() {
 
     companion object {
         private const val TYPE_SEARCH = 1
