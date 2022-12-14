@@ -1,6 +1,7 @@
 package ig.core.android.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ig.core.android.R
 import ig.core.android.service.model.custom.ResourceResponse
+import ig.core.android.service.model.custom.StateFlowResponse
 import ig.core.android.utils.LoadingView
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.okButton
@@ -103,6 +105,30 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel> : Fragment(
             }
         }
     }
+
+    open fun handleStateFlowResponse(resource: StateFlowResponse<*>) {
+        when (resource) {
+            is StateFlowResponse.Loading -> {
+                showLoading(0.3F)
+                return
+            }
+
+            is StateFlowResponse.Success -> {
+                Log.d("Login", "Success....")
+                hideLoading()
+                return
+            }
+
+            is StateFlowResponse.Failure -> {
+                Log.d("Login", "Failure....${resource.msg}")
+                hideLoading()
+                onAlertError(resource.msg)
+                return
+            }
+            else -> Log.d("Login", "Empty....")
+        }
+    }
+
 
     private fun isLoading(isLoading: Boolean) {
         if (isLoading) {

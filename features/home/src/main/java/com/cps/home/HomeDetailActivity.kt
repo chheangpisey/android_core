@@ -8,7 +8,7 @@ import ig.core.android.di.Injection
 class HomeDetailActivity: BaseActivity<FragmentHomeDetailBinding, FragViewModel>() {
     override val mLayoutId = R.layout.fragment_home_detail
     override fun getViewModelClass(): Class<FragViewModel> = FragViewModel::class.java
-    override fun getViewModelFactory(): ViewModelProvider.Factory = Injection.provideMainViewModelFactory
+    override fun getViewModelFactory(): ViewModelProvider.Factory = Injection.provideDemoArchViewModelFactory(this)
 
     override fun initView() {
 

@@ -21,10 +21,7 @@ interface DemoArchDao {
      * @return all user.
      */
     @Query("SELECT * FROM user_table")
-    fun getUser():  User
-
-//    @Query("SELECT * FROM Users")
-//    suspend fun getUsers(): ResourceResponse<User>
+    fun getUser():  List<User>
 
     /**
      * Insert a user in the database. If the task already exists, replace it.
@@ -32,7 +29,7 @@ interface DemoArchDao {
      * @param user the users to be inserted.
      */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertUser(user: User)
+    fun insertUser(user: ArrayList<User>)
 
     /**
      * Delete all user.

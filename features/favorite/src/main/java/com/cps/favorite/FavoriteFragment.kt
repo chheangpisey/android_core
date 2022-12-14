@@ -19,7 +19,7 @@ import ig.core.android.utils.AppConstant
 class FavoriteFragment : BaseFragment<FragmentFavoriteBinding, FragViewModel>() {
     override val mLayoutId = R.layout.fragment_favorite
     override fun getViewModelClass(): Class<FragViewModel> = FragViewModel::class.java
-    override fun getViewModelFactory(): ViewModelProvider.Factory = Injection.provideMainViewModelFactory
+    override fun getViewModelFactory(): ViewModelProvider.Factory = Injection.provideDemoArchViewModelFactory(requireContext())
 
     private val splitInstallManager: SplitInstallManager by lazy { SplitInstallManagerFactory.create(requireContext()) }
 

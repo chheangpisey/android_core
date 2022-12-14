@@ -23,7 +23,7 @@ class DemoArchUseCase(
         repository.gettingData()
     }
 
-    suspend fun save(data: User) = withContext(defaultDispatcher) {
+    suspend fun save(data: ArrayList<User>) = withContext(defaultDispatcher) {
         repository.savingData(data)
     }
 
@@ -31,7 +31,7 @@ class DemoArchUseCase(
         repository.deletingData()
     }
 
-    suspend fun invokeCreate(requestUserCreate: RequestUserCreate) = withContext(defaultDispatcher) {
-        createUserRepository.creatingUser(requestUserCreate)
+    suspend fun invokeCreate(req: RequestUserCreate) = withContext(defaultDispatcher) {
+        createUserRepository.creatingUser(req)
     }
 }

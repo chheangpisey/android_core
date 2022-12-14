@@ -1,19 +1,15 @@
 package ig.core.android.view.ui.activity.main
 
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import ig.core.android.R
 import ig.core.android.base.BaseActivity
 import ig.core.android.databinding.ActivityMainBinding
 import ig.core.android.di.Injection
-import ig.core.android.viewmodel.MainViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override val mLayoutId = R.layout.activity_main
     override fun getViewModelClass(): Class<MainViewModel> = MainViewModel::class.java
-    override fun getViewModelFactory(): ViewModelProvider.Factory = Injection.provideMainViewModelFactory
+    override fun getViewModelFactory(): ViewModelProvider.Factory = Injection.provideDemoArchViewModelFactory(this)
 
     override fun initView() {
         onSetUpGeneralToolbar(getString(R.string.main_activity))

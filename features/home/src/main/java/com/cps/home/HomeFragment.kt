@@ -17,7 +17,7 @@ import ig.core.android.utils.AppConstant.MODULE_HOME
 class HomeFragment : BaseFragment<FragmentHomeBinding, FragViewModel>() {
     override val mLayoutId = R.layout.fragment_home
     override fun getViewModelClass(): Class<FragViewModel> = FragViewModel::class.java
-    override fun getViewModelFactory(): ViewModelProvider.Factory = Injection.provideMainViewModelFactory
+    override fun getViewModelFactory(): ViewModelProvider.Factory = Injection.provideDemoArchViewModelFactory(requireContext())
 
     private val splitInstallManager: SplitInstallManager by lazy { SplitInstallManagerFactory.create(requireContext()) }
 

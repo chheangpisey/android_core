@@ -50,9 +50,9 @@ class MainAdapter(private val context: Context,
         val list = itemList[position]
 
         when (holder.itemViewType) {
-            TYPE_SEARCH -> holder.bind(context, list)
+            TYPE_SEARCH -> holder.bind(context, list, position)
             TYPE_ITEM -> {
-                holder.bind(context, list)
+                holder.bind(context, list, position)
                 holder.itemView.setOnClickListener { listenerMain.onItemClick(itemList[position]) }
             }
         }

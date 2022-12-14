@@ -5,6 +5,7 @@ import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.ViewGroup
 import androidx.activity.viewModels
@@ -191,30 +192,26 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel>: AppCompatA
         }
     }
 
-    /**
-     * Testing StatFlow
-     */
-    open fun handleStateFlowResponse(resource: StateFlowResponse) {
+    open fun handleStateFlowResponse(resource: StateFlowResponse<*>) {
         when (resource) {
             is StateFlowResponse.Loading -> {
-                showLoading()
+                showLoading(0.3F)
                 return
             }
 
-            is StateFlowResponse.Success<*> -> {
+            is StateFlowResponse.Success -> {
+                Log.d("Login", "Success....")
                 hideLoading()
                 return
             }
 
             is StateFlowResponse.Failure -> {
+                Log.d("Login", "Failure....${resource.msg}")
                 hideLoading()
                 onAlertError(resource.msg)
+                return
             }
-
-            else -> {
-                hideLoading()
-                println("Error: $resource")
-            }
+            else -> Log.d("Login", "Empty....")
         }
     }
 

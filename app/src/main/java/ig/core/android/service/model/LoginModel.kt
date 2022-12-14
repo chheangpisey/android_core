@@ -48,7 +48,7 @@ data class ResultLogin(
         val message: String? = "")
 
 data class ResponseUser(
-        val data: User
+        val data: ArrayList<User> = ArrayList()
 )
 
 data class RequestUserCreate(

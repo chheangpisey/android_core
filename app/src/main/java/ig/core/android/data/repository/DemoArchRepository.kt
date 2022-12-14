@@ -3,9 +3,7 @@ package ig.core.android.data.repository
 import ig.core.android.data.datasource.demoarch.DemoArchLocalDatasource
 import ig.core.android.data.datasource.demoarch.dblocator.User
 import ig.core.android.service.implement.ApiServiceImpl
-import ig.core.android.service.model.RequestUserCreate
 import ig.core.android.service.model.ResponseUser
-import ig.core.android.service.model.ResponseUserCreated
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -44,11 +42,11 @@ class DemoArchRepository(
     }.flowOn(Dispatchers.IO)
 
 
-    suspend fun savingData(data: User) {
+    suspend fun savingData(data: ArrayList<User>) {
         dataLocal.saveUser(data)
     }
 
-    suspend fun gettingData(): User {
+    suspend fun gettingData(): List<User> {
        return dataLocal.getUser()
     }
 

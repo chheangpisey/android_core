@@ -13,7 +13,7 @@ import androidx.room.RoomDatabase
  */
 
 private const val DATABASE_NAME = "Users.db"
-@Database(entities = [User::class], version = 4, exportSchema = false)
+@Database(entities = [User::class], version = 6, exportSchema = false)
 abstract class DemoArchDatabase: RoomDatabase() {
     abstract fun user(): DemoArchDao
 

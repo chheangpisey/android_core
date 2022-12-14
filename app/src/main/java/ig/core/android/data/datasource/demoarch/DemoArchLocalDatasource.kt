@@ -2,7 +2,7 @@ package ig.core.android.data.datasource.demoarch
 
 import ig.core.android.data.datasource.demoarch.dblocator.DemoArchDatabase
 import ig.core.android.data.datasource.demoarch.dblocator.User
-import ig.core.android.data.implement.demoarch.DemoArchDataSourceImpl
+import ig.core.android.data.implement.DemoArchDataSourceImpl
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -12,11 +12,11 @@ class DemoArchLocalDatasource(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : DemoArchDataSourceImpl {
 
-    override suspend fun getUser(): User = withContext(dispatcher) {
+    override suspend fun getUser(): List<User> = withContext(dispatcher) {
         database.user().getUser()
     }
 
-    override suspend fun saveUser(user: User) = withContext(dispatcher) {
+    override suspend fun saveUser(user: ArrayList<User>) = withContext(dispatcher) {
         database.user().insertUser(user)
     }
 

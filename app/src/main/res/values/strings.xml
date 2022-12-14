@@ -39,5 +39,7 @@
     <string name="setting">Setting</string>
     <string name="title_favorite">Favorite</string>
     <string name="title_data">core</string>
+    <string name="user_name">User Name</string>
+    <string name="email">Email</string>
 
 </resources>

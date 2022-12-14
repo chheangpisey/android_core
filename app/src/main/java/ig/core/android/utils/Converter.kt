@@ -33,9 +33,6 @@ fun removeLeadingZero(s: String): String{
     return sb.toString()
 }
 
-fun snackBar(view: View, string: String) {
-    Snackbar.make(view, string, Snackbar.LENGTH_SHORT).show()
-}
 
 
 

@@ -28,19 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.ui.activity.navMain.NavigationMainActivity"
-            android:exported="true" />
-        <activity
-            android:name=".view.ui.activity.login.LoginActivity"
-            android:exported="true"
-            android:noHistory="true"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".view.ui.activity.main.MainActivity"
-            android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".view.ui.activity.detail.DetailActivity" />
+
 
         <receiver
             android:name=".service.broadcast.MyReceiver"
