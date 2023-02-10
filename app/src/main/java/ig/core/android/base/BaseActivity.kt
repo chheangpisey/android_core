@@ -7,16 +7,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
+import ig.core.android.utils.stateflow.StateFlowResponse
 import ig.core.android.R
 import ig.core.android.service.model.custom.ResourceResponse
-import ig.core.android.service.model.custom.StateFlowResponse
 import ig.core.android.utils.AppConstant.STARTACTIVITYANIM_LEFT
 import ig.core.android.utils.AppConstant.STARTACTIVITYANIM_RIGHT
 import ig.core.android.utils.AppConstant.STARTACTIVITYANIM_TOP
@@ -194,14 +193,14 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel>: AppCompatA
     /**
      * Testing StatFlow
      */
-    open fun handleStateFlowResponse(resource: StateFlowResponse) {
+    open fun handleStateFlowResponse(resource: StateFlowResponse<*>) {
         when (resource) {
             is StateFlowResponse.Loading -> {
                 showLoading()
                 return
             }
 
-            is StateFlowResponse.Success<*> -> {
+            is StateFlowResponse.Success -> {
                 hideLoading()
                 return
             }

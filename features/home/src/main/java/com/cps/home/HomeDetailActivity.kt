@@ -2,6 +2,7 @@ package com.cps.home
 
 import androidx.lifecycle.ViewModelProvider
 import com.cps.home.databinding.FragmentHomeDetailBinding
+import com.cps.ui.onAlertMessage
 import ig.core.android.base.BaseActivity
 import ig.core.android.di.Injection
 
@@ -11,6 +12,12 @@ class HomeDetailActivity: BaseActivity<FragmentHomeDetailBinding, FragViewModel>
     override fun getViewModelFactory(): ViewModelProvider.Factory = Injection.provideMainViewModelFactory
 
     override fun initView() {
+        directToCoreUi()
+    }
 
+    private fun directToCoreUi() {
+        mBinding.coreUi.setOnClickListener {
+            onAlertMessage("Core:Ui", "Hello") {}
+        }
     }
 }

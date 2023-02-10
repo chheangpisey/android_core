@@ -20,12 +20,14 @@
             android:layout_gravity="center"
             android:text="@string/home"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnDownloadModule"
+            android:background="@color/colorPrimaryDark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/color_background"
             android:layout_margin="@dimen/dimen_20dp"
-            android:text="@string/click_start_download_on_demand_module"
+            android:text="Click To Home Detail Activity"
             android:textAllCaps="false"/>
 
         <ProgressBar

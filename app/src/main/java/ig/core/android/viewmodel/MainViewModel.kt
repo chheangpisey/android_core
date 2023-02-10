@@ -2,7 +2,6 @@ package ig.core.android.viewmodel
 
 import androidx.lifecycle.*
 import ig.core.android.base.BaseViewModel
-import ig.core.android.service.repository.MainStateFlowRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -12,7 +11,7 @@ import javax.inject.Inject
  * Created by: CHHEANG PISEY
  * Date on: 29-08-2022
  */
-class MainViewModel @Inject constructor(private val mainRepository: MainStateFlowRepository) : BaseViewModel() {
+class MainViewModel @Inject constructor() : BaseViewModel() {
     /*** Live Data*/
     private val _liveData = MutableLiveData<String>()
     val liveData: LiveData<String> = _liveData
@@ -23,11 +22,6 @@ class MainViewModel @Inject constructor(private val mainRepository: MainStateFlo
 
     /*** Share Flow*/
     private val _sharedFlow = MutableSharedFlow<String>()
-    val sharedFlow = _sharedFlow.asSharedFlow()
-
-    fun usingLiveData() {
-        _liveData.value = "Using Live Data"
-    }
 
     fun usingStateFlow() {
         _stateFlow.value = "Using State Flow"

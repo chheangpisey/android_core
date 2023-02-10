@@ -19,28 +19,35 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
+
         <activity
-            android:name=".view.ui.activity.demoArch.DemoArchActivity"
+            android:name=".view.ui.activity.hilt.HiltActivity"
             android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".view.ui.activity.demoArch.DemoArchActivity"
+            android:exported="true" />
         <activity
             android:name=".view.ui.activity.navMain.NavigationMainActivity"
             android:exported="true" />
+
         <activity
-            android:name=".view.ui.activity.login.LoginActivity"
+            android:name=".view.ui.activity.MainActivity"
             android:exported="true"
             android:noHistory="true"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".view.ui.activity.main.MainActivity"
-            android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".view.ui.activity.detail.DetailActivity" />
+            android:windowSoftInputMode="stateHidden">
+
+
+        </activity>
 
         <receiver
             android:name=".service.broadcast.MyReceiver"

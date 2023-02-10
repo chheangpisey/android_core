@@ -6,7 +6,6 @@ package ig.core.android.data.repository
  * Modified By piseychheang on 11/22/22 at 9:22 AM
  * File name: DemoArchCreateUserRepository.kt
  */
-import ig.core.android.data.datasource.demoarch.DemoArchLocalDatasource
 import ig.core.android.service.implement.ApiServiceImpl
 import ig.core.android.service.model.RequestUserCreate
 import ig.core.android.service.model.ResponseUserCreated
@@ -16,8 +15,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class DemoArchCreateUserRepository(
-    private val apiServiceImpl: ApiServiceImpl,
-    private val dataLocal: DemoArchLocalDatasource
+    private val apiServiceImpl: ApiServiceImpl
 ) {
     /**
     1- POST - PUT Method:

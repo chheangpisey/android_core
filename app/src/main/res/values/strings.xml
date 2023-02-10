@@ -39,5 +39,6 @@
     <string name="setting">Setting</string>
     <string name="title_favorite">Favorite</string>
     <string name="title_data">core</string>
+    <string name="title_ui">Ui</string>
 
 </resources>

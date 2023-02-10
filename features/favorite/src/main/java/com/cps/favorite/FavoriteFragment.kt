@@ -1,7 +1,6 @@
 package com.cps.favorite
 
 import android.content.Intent
-import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.cps.favorite.databinding.FragmentFavoriteBinding

@@ -7,5 +7,5 @@ import ig.core.android.viewmodel.MainViewModel
 
 class MainViewModelFactory(private val mainRepository: MainStateFlowRepository) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(mainRepository) as T
+    override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel() as T
 }

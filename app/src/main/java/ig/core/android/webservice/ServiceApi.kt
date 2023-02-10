@@ -3,10 +3,7 @@ package ig.core.android.webservice
 import ig.core.android.service.model.*
 import ig.core.android.service.model.custom.ErrorResponse
 import ig.core.android.service.model.custom.NetworkResponse
-import ig.core.android.service.model.custom.StateFlowResponse
-import ig.core.android.service.model.custom.StateFlowResponseTest
 import retrofit2.http.*
-import java.util.concurrent.Flow
 
 /****
  *
@@ -29,16 +26,6 @@ interface ServiceApi {
     suspend fun lcLoginState(
         @Body b: RequestLogin
     ): ResponseLogin
-
-    @POST("laundry/auth/mobile/reader-lc-login")
-    suspend fun lcLoginStateTest(
-        @Body b: RequestLogin
-    ): StateFlowResponseTest<ResponseLogin>
-
-    @POST("laundry/auth/mobile/reader-lc-login")
-    suspend fun lcLoginStateFlow(
-        @Body b: RequestLogin
-    ): StateFlowResponseTest<ResponseLogin>
 
     @GET("api/users/2")
     suspend fun gettingUser(): NetworkResponse<ResponseUser, ErrorResponse>

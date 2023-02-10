@@ -3,15 +3,14 @@ package ig.core.android.view.ui.activity.demoArch
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import ig.core.android.utils.stateflow.StateFlowResponse
+import ig.core.android.utils.stateflow.collectWhenCreated
 import ig.core.android.R
 import ig.core.android.base.BaseActivity
 import ig.core.android.databinding.ActivityDemoArchBinding
 import ig.core.android.di.Injection
 import ig.core.android.service.model.RequestUserCreate
-import ig.core.android.service.model.ResponseUser
 import ig.core.android.service.model.ResponseUserCreated
-import ig.core.android.service.model.custom.StateFlowResponse
-import ig.core.android.service.model.custom.collectWhenCreated
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -28,10 +27,8 @@ class DemoArchActivity : BaseActivity<ActivityDemoArchBinding, DemoArchViewModel
         //requestUser()
 
         //invokeOnCompletion: start this job immediately
-        mViewModel.gettingUserResponse.invokeOnCompletion {
-            lifecycleScope.launchWhenCreated {
-                requestGetUserStateFlow()
-            }
+        lifecycleScope.launchWhenCreated {
+            requestGetUserStateFlow()
         }
 
         mViewModel.fetchingUserCreatedResponse.collectWhenCreated(lifecycleScope, this) {
@@ -61,10 +58,9 @@ class DemoArchActivity : BaseActivity<ActivityDemoArchBinding, DemoArchViewModel
 
                 is StateFlowResponse.Failure -> Log.d("Main", "onCreate: ${it.msg}")
 
-                is StateFlowResponse.Success<*> -> {
+                is StateFlowResponse.Success -> {
                     Log.d("Main", "Success: ${it.data}")
-                    val result = it.data as ResponseUser
-                    mViewModel.setDataToDb(result.data)
+                    mViewModel.setDataToDb(it.data.data)
                 }
 
                 is StateFlowResponse.Empty -> Log.d("Main", "Empty....")

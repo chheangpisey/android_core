@@ -1,12 +1,14 @@
 package ig.core.android.view.ui.activity.demoArch
 
 import androidx.lifecycle.viewModelScope
+import ig.core.android.utils.stateflow.StateFlowResponse
+import ig.core.android.utils.stateflow.handleHttpErrorResponse
 import ig.core.android.base.BaseViewModel
 import ig.core.android.data.datasource.demoarch.dblocator.User
 import ig.core.android.domain.DemoArchUseCase
 import ig.core.android.service.model.RequestUserCreate
-import ig.core.android.service.model.custom.StateFlowResponse
-import ig.core.android.service.model.custom.handleErrorResponse
+import ig.core.android.service.model.ResponseUser
+import ig.core.android.service.model.ResponseUserCreated
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
@@ -24,17 +26,20 @@ class DemoArchViewModel(private val demoArchUseCase: DemoArchUseCase) : BaseView
 //    }
 
     /*** Using StateFlow*/
-    private val _userStateFlow: MutableStateFlow<StateFlowResponse> =
-        MutableStateFlow(StateFlowResponse.Empty)
-    val userStateFlow: StateFlow<StateFlowResponse> = _userStateFlow
+    private val _userStateFlow: MutableStateFlow<StateFlowResponse<ResponseUser>> =
+        MutableStateFlow(StateFlowResponse.Empty())
+    val userStateFlow: StateFlow<StateFlowResponse<ResponseUser>> = _userStateFlow
 
-    val gettingUserResponse = viewModelScope.launch {
-        demoArchUseCase.invoke()
-            .catch { e ->
-                _userStateFlow.emit(StateFlowResponse.Failure(handleErrorResponse(e)))
-            }.collectLatest { data ->
-                _userStateFlow.emit(StateFlowResponse.Success(data))
-            }
+    init {
+        viewModelScope.launch {
+            demoArchUseCase.invoke()
+                .catch { e ->
+                    _userStateFlow.emit(StateFlowResponse.Failure(handleHttpErrorResponse(e)))
+                }.collectLatest { data ->
+                    _userStateFlow.emit(StateFlowResponse.Success(data))
+                }
+        }
+
     }
 
     /*** Database stored data*/
@@ -55,15 +60,15 @@ class DemoArchViewModel(private val demoArchUseCase: DemoArchUseCase) : BaseView
 
     /*** Create User StateFlow*/
     var requestBody = MutableSharedFlow<RequestUserCreate>()
-    private val _createUserStateFlow: MutableStateFlow<StateFlowResponse> =
-        MutableStateFlow(StateFlowResponse.Empty)
-    val createUserStateFlow: StateFlow<StateFlowResponse> = _createUserStateFlow
+    private val _createUserStateFlow: MutableStateFlow<StateFlowResponse<ResponseUserCreated>> =
+        MutableStateFlow(StateFlowResponse.Empty())
+    val createUserStateFlow: StateFlow<StateFlowResponse<ResponseUserCreated>> = _createUserStateFlow
 
     @OptIn(ExperimentalCoroutinesApi::class)
     val fetchingUserCreatedResponse = requestBody.mapLatest {
         demoArchUseCase.invokeCreate(it)
             .catch { e ->
-                _createUserStateFlow.emit(StateFlowResponse.Failure(handleErrorResponse(e)))
+                _createUserStateFlow.emit(StateFlowResponse.Failure(handleHttpErrorResponse(e)))
             }.collectLatest { data ->
                 _createUserStateFlow.emit(StateFlowResponse.Success(data))
             }

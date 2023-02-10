@@ -2,8 +2,6 @@ package ig.core.android.service.repository
 
 import ig.core.android.service.implement.ApiServiceImpl
 import ig.core.android.service.model.PostResponse
-import ig.core.android.service.model.RequestLogin
-import ig.core.android.service.model.ResponseLogin
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

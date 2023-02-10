@@ -53,7 +53,7 @@ android {
         //Update this line for viewModelFactory not supported after we update version of lifeCycle
         freeCompilerArgs = ['-Xjvm-default=compatibility']
     }
-    dynamicFeatures = [':features:home', ':features:favorite', ':core:data']
+    dynamicFeatures = [':features:home', ':features:favorite', ':core:data', ':core:ui']
 }
 
 dependencies {
@@ -107,6 +107,9 @@ dependencies {
     //Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    kapt "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2"
+    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
+
 
     //Modules
     implementation project(':register')
@@ -129,8 +132,10 @@ dependencies {
     implementation "androidx.room:room-ktx:$room_version"
     androidTestImplementation "androidx.room:room-testing:$room_version"
 
+}
 
-
+kapt {
+    correctErrorTypes true
 }
 
 apply plugin: 'com.google.gms.google-services'

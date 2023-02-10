@@ -3,7 +3,6 @@ package ig.core.android.utils.retrofit
 import androidx.annotation.MainThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ig.core.android.data.repository.DemoArchRepository
 import ig.core.android.service.model.custom.ErrorResponse
 import ig.core.android.service.model.custom.NetworkResponse
 import ig.core.android.service.model.custom.ResourceResponse

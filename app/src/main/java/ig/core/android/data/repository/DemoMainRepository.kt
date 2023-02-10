@@ -1,14 +1,7 @@
 
 package ig.core.android.data.repository
 
-import ig.core.android.data.implement.demomain.DemoMainDataSourceImpl
-import ig.core.android.webservice.WebService
-
-class DemoMainRepository(
-    private val webService: WebService,
-    private val dataLocal: DemoMainDataSourceImpl,
-    private val dataRemote: DemoMainDataSourceImpl
-) {
+class DemoMainRepository {
     /**
     1- POST - PUT Method:
     suspend fun sampleRequestBody(scope: CoroutineScope, req: [Your Request Model]):
