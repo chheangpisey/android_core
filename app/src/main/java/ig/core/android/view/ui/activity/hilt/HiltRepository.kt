@@ -1,5 +1,6 @@
 package ig.core.android.view.ui.activity.hilt
 
+import ig.core.android.data.datasource.hilt.HiltRemoteDatasource
 import ig.core.android.service.model.ResponseUser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -14,11 +15,18 @@ import javax.inject.Inject
  * File name: HiltRepository.kt
  */
 
-class HiltRepository @Inject constructor(
-    private val hiltService: HiltService
-) {
-    fun gettingUser(): Flow<ResponseUser> = flow {
-        emit(hiltService.gettingUserStateFlow())
-    }.flowOn(Dispatchers.IO)
+//class HiltRepository @Inject constructor(
+//    private val hiltService: HiltService
+//) {
+//    fun gettingUser(): Flow<ResponseUser> = flow {
+//        emit(hiltService.gettingUserStateFlow())
+//    }.flowOn(Dispatchers.IO)
+//
+//}
 
+class HiltRepository @Inject constructor(
+    private val remote: HiltRemoteDatasource
+) {
+
+    suspend fun gettingUser() = remote.gettingUser()
 }

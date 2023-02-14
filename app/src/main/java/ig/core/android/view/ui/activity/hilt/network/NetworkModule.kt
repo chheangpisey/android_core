@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ig.core.android.view.ui.activity.hilt.HiltService
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
@@ -27,14 +28,20 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun providesApiKeyInterceptor(): Interceptor = NetworkAPIKeyInterceptor()
+
+    @Provides
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor, networkAPIKey: Interceptor): OkHttpClient {
         val okHttpClient = OkHttpClient().newBuilder()
 
         okHttpClient.callTimeout(40, TimeUnit.SECONDS)
         okHttpClient.connectTimeout(40, TimeUnit.SECONDS)
         okHttpClient.readTimeout(40, TimeUnit.SECONDS)
         okHttpClient.writeTimeout(40, TimeUnit.SECONDS)
+
         okHttpClient.addInterceptor(loggingInterceptor)
+        okHttpClient.addNetworkInterceptor(networkAPIKey)
+
         okHttpClient.build()
         return okHttpClient.build()
     }

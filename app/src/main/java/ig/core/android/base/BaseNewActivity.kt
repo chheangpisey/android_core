@@ -48,7 +48,7 @@ abstract class BaseNewActivity<B : ViewDataBinding, VM : BaseViewModel>: AppComp
         }
     }
 
-    private lateinit var loadingViewParent: ViewGroup
+    private var loadingViewParent: ViewGroup? = null
     private  var loadingView: LoadingView? = null
 
     open fun showLoading(alpha: Float? = 0.3f) {

@@ -16,3 +16,6 @@ Released Date: 11-Oct-2022
     - update live template for activity, xml, view model and model factory
 Updated Date: 12-Oct-2022
     - update live template for fragment, repository, view holder
+Updated Date: 14-Feb-2023
+    - add remote datasource using with hilt injection
+    - network module with auth
