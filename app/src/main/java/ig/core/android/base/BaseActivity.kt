@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import ig.core.android.utils.stateflow.StateFlowResponse
+import ig.core.android.utils.stateflow.BaseResponse
 import ig.core.android.R
 import ig.core.android.service.model.custom.ResourceResponse
 import ig.core.android.utils.AppConstant.STARTACTIVITYANIM_LEFT
@@ -193,21 +193,20 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel>: AppCompatA
     /**
      * Testing StatFlow
      */
-    open fun handleStateFlowResponse(resource: StateFlowResponse<*>) {
+    open fun handleStateFlowResponse(resource: BaseResponse<*>) {
         when (resource) {
-            is StateFlowResponse.Loading -> {
+            is BaseResponse.Loading -> {
                 showLoading()
                 return
             }
 
-            is StateFlowResponse.Success -> {
+            is BaseResponse.Success -> {
                 hideLoading()
                 return
             }
 
-            is StateFlowResponse.Failure -> {
+            is BaseResponse.Failure -> {
                 hideLoading()
-                onAlertError(resource.msg)
             }
 
             else -> {

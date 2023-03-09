@@ -1,6 +1,7 @@
 package ig.core.android.view.ui.activity.hilt
 
 import ig.core.android.data.datasource.hilt.HiltRemoteDatasource
+import ig.core.android.service.model.RequestUserCreate
 import ig.core.android.service.model.ResponseUser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -29,4 +30,6 @@ class HiltRepository @Inject constructor(
 ) {
 
     suspend fun gettingUser() = remote.gettingUser()
+
+    suspend fun createUser(requestUserCreate: RequestUserCreate) = remote.createUser(requestUserCreate)
 }

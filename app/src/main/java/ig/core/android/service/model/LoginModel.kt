@@ -1,7 +1,5 @@
 package ig.core.android.service.model
 
-import ig.core.android.data.datasource.demoarch.dblocator.User
-
 data class LoginRequestBody(var email: String? = "", var password: String? = "", var imei: String? = "")
 
 data class LoginResponse (
@@ -49,6 +47,10 @@ data class ResultLogin(
 
 data class ResponseUser(
         val data: User
+)
+
+data class User(
+        val name: String
 )
 
 data class RequestUserCreate(

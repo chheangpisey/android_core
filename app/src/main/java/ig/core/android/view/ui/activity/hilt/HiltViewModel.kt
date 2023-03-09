@@ -1,15 +1,15 @@
 package ig.core.android.view.ui.activity.hilt
 
 import androidx.lifecycle.viewModelScope
-import ig.core.android.utils.stateflow.StateFlowResponse
+import ig.core.android.utils.stateflow.BaseResponse
 import ig.core.android.utils.stateflow.handleHttpErrorResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ig.core.android.base.BaseViewModel
+import ig.core.android.service.model.RequestUserCreate
 import ig.core.android.service.model.ResponseUser
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collectLatest
+import ig.core.android.service.model.ResponseUserCreated
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,20 +25,33 @@ class HiltViewModel @Inject constructor(private val useCase: HiltUseCase) : Base
 
     val userName = MutableStateFlow("Pisey Chheang")
 
-    /*** Using StateFlow*/
-    private val _userStateFlow: MutableStateFlow<StateFlowResponse<ResponseUser>> =
-        MutableStateFlow(StateFlowResponse.Empty())
-    val userStateFlow: StateFlow<StateFlowResponse<ResponseUser>> = _userStateFlow
+    private val _gettingUser = MutableSharedFlow<BaseResponse<ResponseUser>>()
+    val gettingUser = _gettingUser
 
     init {
         viewModelScope.launch {
-           // _userStateFlow.emit(StateFlowResponse.Loading())
             useCase.invokeGettingUser()
+                .onStart { _gettingUser.emit(BaseResponse.Loading()) }
                 .catch { e ->
-                    _userStateFlow.emit(StateFlowResponse.Failure(handleHttpErrorResponse(e)))
+                    _gettingUser.emit(BaseResponse.Failure(handleHttpErrorResponse(e)))
                 }.collectLatest { data ->
-                    _userStateFlow.emit(StateFlowResponse.Success(data))
+                    _gettingUser.emit(BaseResponse.Success(data))
                 }
         }
+    }
+
+    var requestBody = MutableSharedFlow<RequestUserCreate>(replay = 0)
+    private val _createUser = MutableSharedFlow<BaseResponse<ResponseUserCreated>>()
+    val createUser = _createUser
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val fetchingUserCreatedResponse = requestBody.mapLatest {
+        useCase.invokeCreateUser(it)
+            .onStart { _createUser.emit(BaseResponse.Loading()) }
+            .catch { e ->
+                _createUser.emit(BaseResponse.Failure(handleHttpErrorResponse(e)))
+            }.collectLatest { data ->
+                _createUser.emit(BaseResponse.Success(data))
+            }
     }
 }

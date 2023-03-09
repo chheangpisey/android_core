@@ -1,5 +1,6 @@
 package ig.core.android.view.ui.activity.hilt
 
+import ig.core.android.service.model.RequestUserCreate
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -12,13 +13,18 @@ import javax.inject.Inject
  * File name: HiltUseCase.kt
  */
 
-class HiltUseCase @Inject constructor (
+class HiltUseCase @Inject constructor(
     private val repository: HiltRepository
-    ) {
+) {
 
     private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default
 
     suspend fun invokeGettingUser() = withContext(defaultDispatcher) {
         repository.gettingUser()
     }
+
+    suspend fun invokeCreateUser(requestUserCreate: RequestUserCreate) =
+        withContext(defaultDispatcher) {
+            repository.createUser(requestUserCreate)
+        }
 }

@@ -6,7 +6,7 @@ import ig.core.android.databinding.ItemMainBinding
 import ig.core.android.service.model.PostsModel
 
 class ItemMainViewHolder(private val itemMainBinding: ItemMainBinding) : BaseViewHolder<PostsModel>(itemMainBinding.root) {
-    override fun bind(context: Context, item: PostsModel) {
+    override fun bind(context: Context, item: PostsModel, position: Int) {
         itemMainBinding.itemMainViewModel = item
     }
 }

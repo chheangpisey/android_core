@@ -40,5 +40,7 @@
     <string name="title_favorite">Favorite</string>
     <string name="title_data">core</string>
     <string name="title_ui">Ui</string>
+    <string name="title_build_logic">build-logic</string>
+    <string name="title_convention">convention</string>
 
 </resources>

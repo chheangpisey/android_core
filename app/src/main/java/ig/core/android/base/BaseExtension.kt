@@ -39,5 +39,4 @@ abstract class BaseExtension<B : ViewDataBinding, VM : BaseViewModel>: AppCompat
         supportActionBar?.setDisplayShowTitleEnabled(false)
         tvToolbarTitle.text = toolbarTitle
     }
-
 }
